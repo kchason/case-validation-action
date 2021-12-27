@@ -10,4 +10,4 @@ runs:
   using: 'docker'
   image: 'kchason/case-validator:latest'
   env:
-    - CASE_PATH: ${{ inputs.case-path }}
+    CASE_PATH: ${{ inputs.case-path }}
