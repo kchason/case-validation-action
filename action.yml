@@ -8,6 +8,6 @@ inputs:
     default: '/opt/json/'
 runs:
   using: 'docker'
-  image: 'kchason/case-validator:latest'
+  image: 'docker://kchason/case-validator:latest'
   env:
     CASE_PATH: ${{ inputs.case-path }}
