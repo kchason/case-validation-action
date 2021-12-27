@@ -1,0 +1,13 @@
+# action.yml
+name: 'CASE Ontology Validator'
+description: 'Validates files within a directory for compliance with the CASE Cyber Ontology'
+inputs:
+  case-path:  # The path to the directory or file to be validated
+    description: 'The path to the directory or file to be validated'
+    required: false
+    default: '/opt/json/'
+runs:
+  using: 'docker'
+  image: 'kchason/case-validator:latest'
+  env:
+    - CASE_PATH=${{ inputs.case-path }}
