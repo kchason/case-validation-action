@@ -15,10 +15,12 @@ Include the validation action in your GitHub action workflow and specify the fil
   uses: kchason/case-validation-action@v1
   with:
     case-path: ./output/case.json
+    case-version: 0.6.0
 ```
 
 **Inputs:**
-| Variable  | Description                                        |
-|-----------|----------------------------------------------------|
-| case-path | The path to the file or directory to be validated. |
+| Variable     | Description                                                                | Options                            | Default   |
+|--------------|----------------------------------------------------------------------------|------------------------------------|-----------|
+| case-path    | The path to the file or directory to be validated.                         |                                    | /opt/json |
+| case-version | The version of the ontology against which the graph should be validatated. | "none", "case-0.5.0", "case-0.6.0" | "none"    |
 

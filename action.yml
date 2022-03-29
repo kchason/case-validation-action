@@ -6,8 +6,13 @@ inputs:
     description: 'The path to the directory or file to be validated'
     required: false
     default: '/opt/json/'
+  case-version: # The version of the ontology against which the graph should be validatated
+    description: 'The version of the ontology against which the graph should be validatated. Options: "none", "case-0.5.0", "case-0.6.0"'
+    required: false
+    default: 'none'
 runs:
   using: 'docker'
   image: 'docker://kchason/case-validator:latest'
   env:
     CASE_PATH: ${{ inputs.case-path }}
+    CASE_VERSION: ${{ inputs.case-version }}
