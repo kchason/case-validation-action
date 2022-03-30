@@ -14,7 +14,7 @@ RUN rm -rf /opt/workspace/CASE-Utilities-Python
 
 # Define the base path for the validation path
 ENV CASE_PATH "/opt/json/"
-ENV CASE_VERSION "none"
+ENV CASE_VERSION "case-0.6.0"
 
 # Define the command to run the validator against any files in the path defined in the
 # CASE_PATH environment variable. This will work for either a single file or a directory.
