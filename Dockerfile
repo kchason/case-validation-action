@@ -12,11 +12,15 @@ RUN python setup.py install
 WORKDIR /opt/workspace
 RUN rm -rf /opt/workspace/CASE-Utilities-Python
 
+# Copy in the entrypoint file
+COPY entrypoint.sh /opt/workspace/entrypoint.sh
+
 # Define the base path for the validation path
 ENV CASE_PATH "/opt/json/"
 ENV CASE_VERSION "case-0.6.0"
+ENV FILTER_EXTENSION ""
 
-# Define the command to run the validator against any files in the path defined in the
-# CASE_PATH environment variable. This will work for either a single file or a directory.
-# Note, we can't practically use Docker syntax with the command and the environment variable.
-CMD "case_validate" "${CASE_PATH}" "--built-version" "${CASE_VERSION}"
+# Define the command to run the entrypoint.sh script that will detect the type
+# of the path that was provided, apply the filter extension (if appropriate) and
+# run the `case_validate` command against the CASE file(s) to be validated.
+CMD ["bash", "entrypoint.sh"]
