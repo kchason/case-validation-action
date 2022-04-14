@@ -23,4 +23,4 @@ ENV FILTER_EXTENSION ""
 # Define the command to run the entrypoint.sh script that will detect the type
 # of the path that was provided, apply the filter extension (if appropriate) and
 # run the `case_validate` command against the CASE file(s) to be validated.
-CMD ["bash", "entrypoint.sh"]
+CMD ["bash", "/opt/workspace/entrypoint.sh"]
