@@ -4,7 +4,9 @@ FROM python:3.9-slim-bullseye
 WORKDIR /opt/workspace
 
 # Install dependencies
-RUN apt-get update && apt-get install git -y
+RUN apt-get update \
+    && apt-get install git --no-install-recommends -y \
+    && rm -rf /var/lib/apt/lists/*
 RUN git clone https://github.com/casework/CASE-Utilities-Python.git
 WORKDIR /opt/workspace/CASE-Utilities-Python
 RUN python setup.py install
