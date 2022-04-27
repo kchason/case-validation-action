@@ -1,9 +1,10 @@
-FROM python:3.9
+FROM python:3.9-slim-bullseye
 
 # This is based on guidance in https://github.com/casework/CASE-Utilities-Python/tree/main
 WORKDIR /opt/workspace
 
 # Install dependencies
+RUN apt-get update && apt-get install git -y
 RUN git clone https://github.com/casework/CASE-Utilities-Python.git
 WORKDIR /opt/workspace/CASE-Utilities-Python
 RUN python setup.py install

@@ -27,7 +27,7 @@ Include the validation action in your GitHub action workflow and specify the fil
 ## Inputs
 | Variable         | Description                                                  | Options                            | Default      |
 | ---------------- | ------------------------------------------------------------ | ---------------------------------- | ------------ |
-| case-path        | The path to the file or directory to be validated.           |                                    | /opt/json    |
+| case-path        | The path to the file or directory to be validated.           | Any                                | /opt/json    |
 | case-version     | The version of the ontology against which the graph should be validatated. | "none", "case-0.5.0", "case-0.6.0" | "case-0.6.0" |
 | extension-filter | The extension of only the files against which the validator should be run. Eg. `"json"`, `"jsonld"`, `"case"`. Defaults to `""` to run against all files defined in `case-path`. | Any                                | ""           |
 
