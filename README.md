@@ -1,7 +1,8 @@
 # CASE Validation Action
 _This is an unofficial GitHub Action and not endorsed by the CASE Community or the Linux Foundation. No warranties or guarantees are made to its accuracy or functionality._ 
 
-![Latest Tag](https://img.shields.io/github/v/tag/kchason/case-validation-action)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kchason/case-validation-action/validate?label=ci%20checks)
+![Latest Tag](https://img.shields.io/github/v/tag/kchason/case-validation-action?label=action%20version)
 ![Docker Build Status](https://img.shields.io/docker/cloud/build/kchason/case-validator)
 ![Docker Pulls](https://img.shields.io/docker/pulls/kchason/case-validator)
 
