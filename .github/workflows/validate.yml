@@ -1,0 +1,42 @@
+name: Repository Checks
+
+on: [ push ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      # Get the code from the repository to be packaged
+      - name: Get Repo
+        uses: actions/checkout@v2
+
+      # Lint the Dockerfile for syntax correctness and conformance with
+      # standards.
+      - name: lint
+        uses: luke142367/Docker-Lint-Action@v1.0.0
+        with:
+          target: Dockerfile
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # Get the code from the repository to be packaged
+      - name: Get Repo
+        uses: actions/checkout@v2
+
+      - name: Run Action - Specific File
+        uses: ./
+        with:
+          case-path: "./tests/data/simple-case.jsonld"
+          case-version: "case-0.6.0"
+
+      - name: Run Action - Directory Filter
+        uses: ./
+        with:
+          case-path: "./tests/data/"
+          case-version: "case-0.6.0"
+          extension-filter: "jsonld"
+      
+      
