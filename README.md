@@ -35,7 +35,12 @@ The environment variables are defined below in the "Inputs" table, and the below
 
 ```bash
 # To run the latest image and remove the container after execution. 
-docker run --rm -e CASE_PATH="/opt/case/" -e CASE_VERSION="case-0.6.0" -e FILTER_EXTENSION="jsonld" -v "/path/to/local:/opt/case" kchason/case-validator:latest
+docker run --rm \
+	-e CASE_PATH="/opt/case/" \
+	-e CASE_VERSION="case-0.6.0" \
+	-e FILTER_EXTENSION="jsonld" \
+	-v "/path/to/local:/opt/case" \
+	kchason/case-validator:latest
 ```
 
 ## Inputs
@@ -48,7 +53,7 @@ docker run --rm -e CASE_PATH="/opt/case/" -e CASE_VERSION="case-0.6.0" -e FILTER
 
 ## Example Output
 
-_Output will be duplicated if multiple files are provided_
+_Output will be listed linearly if multiple files are provided_
 ### Conforming
 ```bash
 Validating file at ./output/case.json
