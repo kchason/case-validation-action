@@ -2,9 +2,9 @@
 _This is an unofficial GitHub Action and not endorsed by the CASE Community or the Linux Foundation. No warranties or guarantees are made to its accuracy or functionality._ 
 
 [![Repository Checks](https://github.com/kchason/case-validation-action/actions/workflows/validate.yml/badge.svg)](https://github.com/kchason/case-validation-action/actions/workflows/validate.yml)
-![Latest Tag](https://img.shields.io/github/v/tag/kchason/case-validation-action?label=action%20version)
-![Docker Build Status](https://img.shields.io/docker/cloud/build/kchason/case-validator)
-![Docker Pulls](https://img.shields.io/docker/pulls/kchason/case-validator)
+[![Latest Tag](https://img.shields.io/github/v/tag/kchason/case-validation-action?label=action%20version)](https://github.com/kchason/case-validation-action/tags)
+[![Docker Build Status](https://img.shields.io/docker/cloud/build/kchason/case-validator)](https://hub.docker.com/repository/docker/kchason/case-validator)
+[![Docker Pulls](https://img.shields.io/docker/pulls/kchason/case-validator)](https://hub.docker.com/repository/docker/kchason/case-validator)
 
 
 ## Overview
