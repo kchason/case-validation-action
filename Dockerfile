@@ -4,23 +4,17 @@ FROM python:3.9-slim-bullseye
 WORKDIR /opt/workspace
 
 # Install dependencies
-RUN apt-get update \
-    && apt-get install git --no-install-recommends -y \
-    && rm -rf /var/lib/apt/lists/*
-RUN git clone https://github.com/casework/CASE-Utilities-Python.git
-WORKDIR /opt/workspace/CASE-Utilities-Python
-RUN python setup.py install
+RUN python -m pip install case-utils==0.6.0
 
 # Delete source files now that package has been installed
 WORKDIR /opt/workspace
-RUN rm -rf /opt/workspace/CASE-Utilities-Python
 
 # Copy in the entrypoint file
 COPY entrypoint.sh /opt/workspace/entrypoint.sh
 
 # Define the base path for the validation path
 ENV CASE_PATH "/opt/json/"
-ENV CASE_VERSION "case-0.6.0"
+ENV CASE_VERSION "case-0.7.0"
 ENV FILTER_EXTENSION ""
 
 # Define the command to run the entrypoint.sh script that will detect the type
