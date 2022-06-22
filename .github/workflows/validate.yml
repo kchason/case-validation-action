@@ -30,13 +30,13 @@ jobs:
         uses: ./
         with:
           case-path: "./tests/data/simple-case.jsonld"
-          case-version: "case-0.6.0"
+          case-version: "case-0.7.0"
 
       - name: Run Action - Directory Filter
         uses: ./
         with:
           case-path: "./tests/data/"
-          case-version: "case-0.6.0"
+          case-version: "case-0.7.0"
           extension-filter: "jsonld"
       
       
