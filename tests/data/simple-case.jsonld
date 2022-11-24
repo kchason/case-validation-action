@@ -28,7 +28,7 @@
                 "@id": "kb:abc-org-1"
             },
             "uco-core:name": "123",
-            "uco-tool:description": "123 Analysis Tool",
+            "uco-core:description": "123 Analysis Tool",
             "@id": "kb:123-tool-1",
             "@type": "uco-tool:Tool"
         },
