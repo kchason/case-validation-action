@@ -1,6 +1,9 @@
 # action.yml
 name: 'CASE Ontology Validator'
 description: 'Validates files within a directory for compliance with the CASE Cyber Ontology'
+branding:
+  icon: 'check-circle'
+  color: 'green'
 inputs:
   case-path:
     description: 'The path to the directory or file to be validated'
