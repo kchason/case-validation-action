@@ -2,6 +2,7 @@
 _This is an unofficial GitHub Action and not endorsed by the CASE Community or the Linux Foundation. No warranties or guarantees are made to its accuracy or functionality._ 
 
 [![Repository Checks](https://github.com/kchason/case-validation-action/actions/workflows/validate.yml/badge.svg)](https://github.com/kchason/case-validation-action/actions/workflows/validate.yml)
+![CASE Version](https://img.shields.io/badge/CASE%20Version-1.1.0-brightgreen.svg)
 [![Latest Tag](https://img.shields.io/github/v/tag/kchason/case-validation-action?label=action%20version)](https://github.com/kchason/case-validation-action/tags)
 [![Docker Build Status](https://img.shields.io/docker/cloud/build/kchason/case-validator)](https://hub.docker.com/repository/docker/kchason/case-validator)
 [![Docker Pulls](https://img.shields.io/docker/pulls/kchason/case-validator)](https://hub.docker.com/repository/docker/kchason/case-validator)
@@ -20,7 +21,7 @@ Include the validation action in your GitHub action workflow and specify the fil
 ```yaml
 # Run the CASE validation job to confirm the output is valid
 - name: CASE Export Validation
-  uses: kchason/case-validation-action@v2.4
+  uses: kchason/case-validation-action@v2.5
   with:
     case-path: ./output/
     case-version: "case-1.1.0"
