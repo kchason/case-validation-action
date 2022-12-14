@@ -4,7 +4,7 @@ FROM python:3.10-slim-bullseye
 WORKDIR /opt/workspace
 
 # Install dependencies
-RUN python -m pip install case-utils==0.8.0
+RUN python -m pip install case-utils==0.9.0
 
 # Delete source files now that package has been installed
 WORKDIR /opt/workspace
