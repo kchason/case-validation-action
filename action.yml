@@ -17,8 +17,8 @@ inputs:
     description: 'The extension of only the files against which the validator should be run. Eg. "json", "jsonld", "case". Defaults to "" to run against all files defined in `case-path`.'
     required: false
     default: ''
-  fast-fail:
-    description: 'Whether to fail the validator on the first invalid entity'
+  abort:
+    description: 'Whether to abort the validator on the first failure'
     required: false
     default: 'false'
 runs:
@@ -28,4 +28,4 @@ runs:
     CASE_PATH: ${{ inputs.case-path }}
     CASE_VERSION: ${{ inputs.case-version }}
     EXTENSION_FILTER: ${{ inputs.extension-filter }}
-    FAST_FAIL: ${{ inputs.fast-fail }}
+    ABORT: ${{ inputs.abort }}

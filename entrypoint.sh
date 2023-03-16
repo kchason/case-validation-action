@@ -2,7 +2,7 @@
 
 # Build the arguments for the validator
 cmd="case_validate --built-version ${CASE_VERSION}"
-if [ "${FAIL_FAST}" = true ]; then
+if [ "${ABORT}" = true ]; then
     cmd="${cmd} --abort"
 fi
 
