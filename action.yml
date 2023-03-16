@@ -28,4 +28,4 @@ runs:
     CASE_PATH: ${{ inputs.case-path }}
     CASE_VERSION: ${{ inputs.case-version }}
     EXTENSION_FILTER: ${{ inputs.extension-filter }}
-    ABORT: ${{ inputs.abort }}
+    CASE_VALIDATE_ABORT: ${{ inputs.abort }}
