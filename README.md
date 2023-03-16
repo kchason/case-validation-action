@@ -51,7 +51,7 @@ docker run --rm \
 | case-path        | CASE_PATH            | The path to the file or directory to be validated.           | Any                                | /opt/json    |
 | case-version     | CASE_VERSION         | The version of the ontology against which the graph should be validatated. | "none", "case-0.5.0", "case-0.6.0" , "case-0.7.0", "case-0.7.1", "case-1.0.0", "case-1.1.0" | "case-1.1.0" |
 | extension-filter | FILTER_EXTENSION     | The extension of only the files against which the validator should be run. Eg. `"json"`, `"jsonld"`, `"case"`. Defaults to `""` to run against all files defined in `case-path`. | Any                                | ""           |
-| fast-fail        | FAST_FAIL            | Whether to fail the validator on the first invalid entity            | "true", "false"    | "false" |
+| fast-fail        | FAST_FAIL            | Whether to fail the validator on the first invalid entity            | "true", "false"   | "false" |
 
 ## Example Output
 
