@@ -62,7 +62,6 @@ CASE Export Validation:
         # The extension of only the files against which the validator should be run. Eg. "json", "jsonld", "case". Defaults to "" to run against all files defined in CASE_PATH.
         FILTER_EXTENSION: "jsonld"
     script:
-		# Run the script that's packaged with the Docker container
         - source /opt/workspace/entrypoint.sh
     tags:
         - docker
