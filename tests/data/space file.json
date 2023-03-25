@@ -1,0 +1,53 @@
+{
+    "@context": {
+        "uco-tool": "https://ontology.unifiedcyberontology.org/uco/tool/",
+        "uco-observable": "https://ontology.unifiedcyberontology.org/uco/observable/",
+        "uco-core": "https://ontology.unifiedcyberontology.org/uco/core/",
+        "case-investigation": "https://ontology.caseontology.org/case/investigation/",
+        "uco-identity": "https://ontology.unifiedcyberontology.org/uco/identity/",
+        "uco-location": "https://ontology.unifiedcyberontology.org/uco/location/",
+        "kb": "http://example.org/kb/",
+        "uco-vocabulary": "https://ontology.unifiedcyberontology.org/uco/vocabulary/",
+        "uco-types": "https://ontology.unifiedcyberontology.org/uco/types/",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "uco-action": "https://ontology.unifiedcyberontology.org/uco/action/"
+    },
+    "@graph": [
+        {
+            "uco-core:description": "ABC Corp",
+            "@id": "kb:abc-org-37d0d126-b962-4b81-96d1-f7a9a6ea2549",
+            "@type": "uco-identity:Organization",
+            "uco-core:name": "ABC"
+        },
+        {
+            "uco-tool:version": "1.0.0",
+            "uco-tool:toolType": "Analysis",
+            "uco-tool:creator": {
+                "@id": "kb:abc-org-37d0d126-b962-4b81-96d1-f7a9a6ea2549"
+            },
+            "uco-core:name": "123",
+            "uco-core:description": "123 Analysis Tool",
+            "@id": "kb:123-tool-9e3decfa-404c-4b97-90b6-f63f7914138a",
+            "@type": "uco-tool:Tool"
+        },
+        {
+            "uco-action:instrument": [
+                {
+                    "@id": "kb:123-tool-9e3decfa-404c-4b97-90b6-f63f7914138a"
+                }
+            ],
+            "uco-action:startTime": {
+                "@type": "xsd:dateTime",
+                "@value": "2022-04-13T12:24:00.424034Z"
+            },
+            "uco-action:endTime": {
+                "@type": "xsd:dateTime",
+                "@value": "2022-04-13T12:24:04.458020Z"
+            },
+            "@id": "kb:investigative-action-215e9d1d-eee2-44ee-a0a0-f29efa1bd30c",
+            "@type": "case-investigation:InvestigativeAction"
+        }
+    ]
+}
