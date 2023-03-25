@@ -44,6 +44,30 @@ docker run --rm \
 	kchason/case-validator:latest
 ```
 
+### GitLab CI/CD Usage
+The built container image available on Docker Hub can also be integrated into [GitLab CI/CD](https://docs.gitlab.com/ee/ci/) to validate files in the source repository.
+
+This job depends on a runner tagged with `docker` which is a default in GitLab's hosted [SaaS runners](https://docs.gitlab.com/ee/ci/runners/) but can be modified for self-hosted environments so long as it's a Docker or Kubernetes [executor](https://docs.gitlab.com/runner/#executors).
+
+```yaml
+CASE Export Validation:
+    stage: Validation
+    allow_failure: false
+    image: kchason/case-validator:latest
+    variables:
+        # The path to the file or directory to be validated. This can be relative to the project or an absolute path.
+        CASE_PATH: "tests/data"
+        # The version of the ontology against which the graph should be validatated.
+        CASE_VERSION: "case-1.1.0"
+        # The extension of only the files against which the validator should be run. Eg. "json", "jsonld", "case". Defaults to "" to run against all files defined in CASE_PATH.
+        FILTER_EXTENSION: "jsonld"
+    script:
+		# Run the script that's packaged with the Docker container
+        - source /opt/workspace/entrypoint.sh
+    tags:
+        - docker
+```
+
 ## Inputs
 
 | Action Variable  | Environment Variable | Description                                                  | Options                            | Default      |
