@@ -38,5 +38,9 @@ jobs:
           case-path: "./tests/data/"
           case-version: "case-1.1.0"
           extension-filter: "jsonld"
-      
-      
+
+      - name: Run Action - Directory No Filter
+        uses: ./
+        with: 
+          case-path: "./tests/data/"
+          case-version: "case-1.1.0"
