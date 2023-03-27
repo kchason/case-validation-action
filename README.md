@@ -44,6 +44,12 @@ docker run --rm \
 	kchason/case-validator:latest
 ```
 
+### GitLab CI/CD Usage
+The built container image available on Docker Hub can also be integrated into [GitLab CI/CD](https://docs.gitlab.com/ee/ci/) to validate files in the source repository.
+
+Example usage and documentation are available in a demo project on GitLab at [https://gitlab.com/keith.chason/case-validation-example](https://gitlab.com/keith.chason/case-validation-example).
+
+
 ## Inputs
 
 | Action Variable  | Environment Variable | Description                                                  | Options                            | Default      |
