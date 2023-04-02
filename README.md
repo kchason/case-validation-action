@@ -13,7 +13,7 @@ A GitHub Action validator for the CASE Cyber Ontology which is available at [htt
 
 This is based on the `case_validate` library included in the CASE Utilities project available at: [https://github.com/casework/CASE-Utilities-Python](https://github.com/casework/CASE-Utilities-Python). 
 
-This is also available as a Docker image at: [https://hub.docker.com/repository/docker/kchason/case-validator](https://hub.docker.com/repository/docker/kchason/case-validator)
+This is also available as a Docker image at: [https://hub.docker.com/r/kchason/case-validator](https://hub.docker.com/r/kchason/case-validator)
 
 ## GitHub Action Usage
 Include the validation action in your GitHub action workflow and specify the file or directory to be validated.
