@@ -10,9 +10,9 @@ inputs:
     required: false
     default: '/opt/json/'
   case-version:
-    description: 'The version of the ontology against which the graph should be validated. Options: "none", "case-0.5.0", "case-0.6.0", "case-0.7.0", "case-0.7.1", "case-1.0.0", "case-1.1.0"'
+    description: 'The version of the ontology against which the graph should be validated. Options: "none", "case-0.5.0", "case-0.6.0", "case-0.7.0", "case-0.7.1", "case-1.0.0", "case-1.1.0", "case-1.2.0"'
     required: false
-    default: 'case-1.1.0'
+    default: 'case-1.2.0'
   extension-filter:
     description: 'The extension of only the files against which the validator should be run. Eg. "json", "jsonld", "case". Defaults to "" to run against all files defined in `case-path`.'
     required: false
@@ -23,7 +23,7 @@ inputs:
     default: 'false'
 runs:
   using: 'docker'
-  image: 'docker://kchason/case-validator:1.1.0'
+  image: 'docker://kchason/case-validator:1.2.0'
   env:
     CASE_PATH: ${{ inputs.case-path }}
     CASE_VERSION: ${{ inputs.case-version }}
