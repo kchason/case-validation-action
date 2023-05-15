@@ -21,7 +21,7 @@ Include the validation action in your GitHub action workflow and specify the fil
 ```yaml
 # Run the CASE validation job to confirm the output is valid
 - name: CASE Export Validation
-  uses: kchason/case-validation-action@v2.7
+  uses: kchason/case-validation-action@v2.6.1
   with:
     case-path: ./output/
     case-version: "case-1.2.0"
