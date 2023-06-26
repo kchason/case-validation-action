@@ -59,7 +59,7 @@ Example usage and documentation are available in a demo project on GitLab at [ht
 | case-version     | CASE_VERSION         | The version of the ontology against which the graph should be validatated. | "none", "case-0.5.0", "case-0.6.0" , "case-0.7.0", "case-0.7.1", "case-1.0.0", "case-1.1.0", "case-1.2.0" | "case-1.2.0" |
 | extension-filter | FILTER_EXTENSION     | The extension of only the files against which the validator should be run. Eg. `"json"`, `"jsonld"`, `"case"`. Defaults to `""` to run against all files defined in `case-path`. | Any                                | ""           |
 | abort            | CASE_VALIDATE_ABORT  | Whether to abort the validator on the first failure            | "true", "false"   | "false" |
-| report-in-pr     | REPORT_IN_PR         | Whether or not to report the validation results in the pull request. | "true", "false"                   | "false"      |
+| report-in-pr     | REPORT_IN_PR         | Whether or not to report the validation results in the pull request. Only reports if the action is triggered by a pull request. | "true", "false"                   | "false"      |
 
 ## Example Output
 

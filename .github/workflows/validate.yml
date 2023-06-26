@@ -44,3 +44,4 @@ jobs:
         with: 
           case-path: "./tests/data/"
           case-version: "case-1.2.0"
+          report-in-pr: "true"

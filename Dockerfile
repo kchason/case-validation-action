@@ -4,7 +4,7 @@ FROM python:3.11-slim-bullseye
 WORKDIR /opt/workspace
 
 # Install dependencies
-RUN python -m pip install case-utils==0.11.0
+RUN python -m pip install case-utils==0.11.0 PyGithub
 
 # Delete source files now that package has been installed
 WORKDIR /opt/workspace
@@ -18,8 +18,12 @@ ENV CASE_VERSION "case-1.2.0"
 ENV FILTER_EXTENSION ""
 ENV CASE_VALIDATE_ABORT "false"
 ENV REPORT_IN_PR "false"
+# Required for annotating the GitHub pull request; optional otherwise
+ENV GITHUB_TOKEN ""
+ENV GITHUB_REPOSITORY ""
+ENV GITHUB_PULL_REQUEST ""
 
 # Define the command to run the entrypoint.sh script that will detect the type
 # of the path that was provided, apply the filter extension (if appropriate) and
 # run the `case_validate` command against the CASE file(s) to be validated.
-CMD ["bash", "/opt/workspace/entrypoint.sh"]
+CMD ["python3", "/opt/workspace/entrypoint.python"]
