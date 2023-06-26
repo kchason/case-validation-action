@@ -16,6 +16,7 @@ COPY entrypoint.sh /opt/workspace/entrypoint.sh
 ENV CASE_PATH "/opt/json/"
 ENV CASE_VERSION "case-1.0.0"
 ENV FILTER_EXTENSION ""
+ENV REPORT_IN_PR "false"
 
 # Define the command to run the entrypoint.sh script that will detect the type
 # of the path that was provided, apply the filter extension (if appropriate) and
