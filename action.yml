@@ -1,23 +1,31 @@
 # action.yml
 name: 'CASE Ontology Validator'
 description: 'Validates files within a directory for compliance with the CASE Cyber Ontology'
+branding:
+  icon: 'check-circle'
+  color: 'green'
 inputs:
   case-path:
     description: 'The path to the directory or file to be validated'
     required: false
     default: '/opt/json/'
   case-version:
-    description: 'The version of the ontology against which the graph should be validated. Options: "none", "case-0.5.0", "case-0.6.0", "case-0.7.0", "case-0.7.1"'
+    description: 'The version of the ontology against which the graph should be validated. Options: "none", "case-0.5.0", "case-0.6.0", "case-0.7.0", "case-0.7.1", "case-1.0.0", "case-1.1.0", "case-1.2.0"'
     required: false
-    default: 'case-1.0.0'
+    default: 'case-1.2.0'
   extension-filter:
     description: 'The extension of only the files against which the validator should be run. Eg. "json", "jsonld", "case". Defaults to "" to run against all files defined in `case-path`.'
     required: false
     default: ''
+  abort:
+    description: 'Whether to abort the validator on the first failure'
+    required: false
+    default: 'false'
 runs:
   using: 'docker'
-  image: 'docker://kchason/case-validator:1.0.0'
+  image: 'docker://kchason/case-validator:1.2.0'
   env:
     CASE_PATH: ${{ inputs.case-path }}
     CASE_VERSION: ${{ inputs.case-version }}
     EXTENSION_FILTER: ${{ inputs.extension-filter }}
+    CASE_VALIDATE_ABORT: ${{ inputs.abort }}

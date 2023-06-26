@@ -4,7 +4,7 @@ FROM python:3.11-slim-bullseye
 WORKDIR /opt/workspace
 
 # Install dependencies
-RUN python -m pip install case-utils==0.7.0
+RUN python -m pip install case-utils==0.11.0
 
 # Delete source files now that package has been installed
 WORKDIR /opt/workspace
@@ -14,8 +14,9 @@ COPY entrypoint.sh /opt/workspace/entrypoint.sh
 
 # Define the base path for the validation path
 ENV CASE_PATH "/opt/json/"
-ENV CASE_VERSION "case-1.0.0"
+ENV CASE_VERSION "case-1.2.0"
 ENV FILTER_EXTENSION ""
+ENV CASE_VALIDATE_ABORT "false"
 ENV REPORT_IN_PR "false"
 
 # Define the command to run the entrypoint.sh script that will detect the type

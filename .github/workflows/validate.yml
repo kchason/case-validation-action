@@ -8,7 +8,7 @@ jobs:
     steps:
       # Get the code from the repository to be packaged
       - name: Get Repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # Lint the Dockerfile for syntax correctness and conformance with
       # standards.
@@ -24,19 +24,23 @@ jobs:
     steps:
       # Get the code from the repository to be packaged
       - name: Get Repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Run Action - Specific File
         uses: ./
         with:
           case-path: "./tests/data/simple-case.jsonld"
-          case-version: "case-0.7.0"
+          case-version: "case-1.2.0"
 
       - name: Run Action - Directory Filter
         uses: ./
         with:
           case-path: "./tests/data/"
-          case-version: "case-0.7.0"
+          case-version: "case-1.2.0"
           extension-filter: "jsonld"
-      
-      
+
+      - name: Run Action - Directory No Filter
+        uses: ./
+        with: 
+          case-path: "./tests/data/"
+          case-version: "case-1.2.0"

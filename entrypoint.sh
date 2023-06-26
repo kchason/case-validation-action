@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Build the arguments for the validator
+cmd="case_validate --built-version ${CASE_VERSION}"
+if [ "${CASE_VALIDATE_ABORT}" = true ]; then
+    cmd="${cmd} --abort"
+fi
+
 # Determine if the provided path is a directory. If so, then there is filtering and other handling
 # to address. If it is a file, then it is assumed it should be validated.
 if [[ -d "${CASE_PATH}" ]]; then
@@ -11,20 +17,20 @@ if [[ -d "${CASE_PATH}" ]]; then
         for entry in "${CASE_PATH}"/*
         do
             echo "Validating file ${entry} found within ${CASE_PATH}"
-            case_validate "${entry}" --built-version "${CASE_VERSION}"
+            $cmd "${entry}"
         done
     else 
         # Filter was specified, only run against provided files
         for entry in "${CASE_PATH}"/*."${EXTENSION_FILTER}"
         do
-            echo "Validating file ${entry} found within ${CASE_PATH}"
-            case_validate "${entry}" --built-version "${CASE_VERSION}"
+            echo "Validating filtered file ${entry} found within ${CASE_PATH}"
+            $cmd "${entry}"
         done
     fi
 
 elif [[ -f ${CASE_PATH} ]]; then
     echo "Validating file at ${CASE_PATH}"
-    case_validate "${CASE_PATH}" --built-version "${CASE_VERSION}"
+    $cmd "${CASE_PATH}"
 else
     echo "${CASE_PATH} is not a valid path and the validation cannot continue"
     exit 1
