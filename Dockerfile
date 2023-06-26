@@ -10,14 +10,14 @@ RUN python -m pip install case-utils==0.11.0 PyGithub
 WORKDIR /opt/workspace
 
 # Copy in the entrypoint file
-COPY entrypoint.sh /opt/workspace/entrypoint.sh
+COPY entrypoint.py /opt/workspace/entrypoint.py
 
 # Define the base path for the validation path
 ENV CASE_PATH "/opt/json/"
 ENV CASE_VERSION "case-1.2.0"
 ENV FILTER_EXTENSION ""
-ENV CASE_VALIDATE_ABORT "false"
-ENV REPORT_IN_PR "false"
+ENV CASE_VALIDATE_ABORT "False"
+ENV REPORT_IN_PR "False"
 # Required for annotating the GitHub pull request; optional otherwise
 ENV GITHUB_TOKEN ""
 ENV GITHUB_REPOSITORY ""
@@ -26,4 +26,4 @@ ENV GITHUB_PULL_REQUEST ""
 # Define the command to run the entrypoint.sh script that will detect the type
 # of the path that was provided, apply the filter extension (if appropriate) and
 # run the `case_validate` command against the CASE file(s) to be validated.
-CMD ["python3", "/opt/workspace/entrypoint.python"]
+CMD ["python3", "/opt/workspace/entrypoint.py"]

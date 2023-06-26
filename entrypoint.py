@@ -4,13 +4,13 @@ import subprocess
 from github import Github
 
 # Define the global variables from the environment variables
-case_path = os.getenv('CASE_PATH', './tests/data/')
+case_path = os.getenv('CASE_PATH', '')
 extension_filter = os.getenv('FILTER_EXTENSION', '')
 case_version = os.getenv('CASE_VERSION', 'case-1.2.0')
-abort_on_error = os.getenv('CASE_VALIDATE_ABORT', False)
-report_in_pr = bool(os.getenv('REPORT_IN_PR', False))
+abort_on_error = os.getenv('CASE_VALIDATE_ABORT', 'False').lower() in ('true', '1', 't')
+report_in_pr = os.getenv('REPORT_IN_PR', 'False').lower() in ('true', '1', 't')
 
-
+# Define the local variables
 relative_path: str = ''
 files: list[str] = []
 results: list[dict] = []
@@ -33,11 +33,10 @@ def generate_html_report(results: list[dict]) -> str:
         html += f'<details><summary><h3>{result["file"]} {"<span>&#x2713;</span>" if result["return_code"] == 0 else "<span>&#x2717;</span>"}</h3></summary><pre>{result["output"]}</pre></details>'
     return html
 
-def annotate_pr(message: str, success: bool = True) -> None:
+def annotate_pr(message: str) -> None:
     """
     Annotate the GitHub Pull Request with the given message
     :param message: The message to annotate the PR with
-    :param success: Whether the check was successful or not
     :return: None
     """
     # If we're not reporting in the PR, just print the message and return
@@ -122,7 +121,7 @@ print("========================================")
 
 # Annotate the PR
 success: bool = len([result for result in results if result['return_code'] != 0]) == 0
-annotate_pr(generate_html_report(results), success)
+annotate_pr(generate_html_report(results))
 
 # Exit with a non-zero exit code if there were any failures
 if not success:

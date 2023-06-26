@@ -27,7 +27,7 @@ inputs:
     default: 'false'
 runs:
   using: 'docker'
-  image: 'docker://kchason/case-validator:1.2.0'
+  image: 'docker://kchason/case-validator:1.3.0'
   env:
     CASE_PATH: ${{ inputs.case-path }}
     CASE_VERSION: ${{ inputs.case-version }}
