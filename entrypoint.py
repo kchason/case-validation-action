@@ -7,7 +7,7 @@ from case_utils.case_validate.validate_types import ValidationResult
 # Get the environment variables as the settings for the validation
 case_version: str = os.environ.get("CASE_VERSION", "case-1.2.0")
 abort_on_failure: bool = (
-        os.environ.get("CASE_VALIDATE_ABORT", "false").lower() == "true"
+    os.environ.get("CASE_VALIDATE_ABORT", "false").lower() == "true"
 )  # noqa: E501
 case_path: str = os.environ.get("CASE_PATH", "/opt/json/")
 extension_filter: str = os.environ.get("CASE_FILTER_EXTENSION", "")
