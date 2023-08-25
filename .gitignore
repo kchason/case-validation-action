@@ -1,3 +1,8 @@
-# Python Virtual Environments
-/venv
-/virtualenv
+# IDE Settings
+.idea/
+.vs/
+.vscode/
+
+# Environments
+venv/
+virtualenv/

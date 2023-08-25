@@ -31,5 +31,5 @@ runs:
   env:
     CASE_PATH: ${{ inputs.case-path }}
     CASE_VERSION: ${{ inputs.case-version }}
-    EXTENSION_FILTER: ${{ inputs.extension-filter }}
+    CASE_EXTENSION_FILTER: ${{ inputs.extension-filter }}
     CASE_VALIDATE_ABORT: ${{ inputs.abort }}

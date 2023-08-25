@@ -10,6 +10,12 @@ jobs:
       - name: Get Repo
         uses: actions/checkout@v3
 
+      # Install pre-commit and run the checks
+      - name: Pre-commit Checks
+        run: |
+          pip -q install pre-commit
+          pre-commit run --all-files
+
       # Lint the Dockerfile for syntax correctness and conformance with
       # standards.
       - name: Docker Lint
@@ -18,7 +24,7 @@ jobs:
           target: Dockerfile
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  
+
   test:
     runs-on: ubuntu-latest
     steps:
@@ -41,7 +47,7 @@ jobs:
 
       - name: Run Action - Directory No Filter
         uses: ./
-        with: 
+        with:
           case-path: "./tests/data/"
           case-version: "case-1.2.0"
           report-in-pr: "true"
