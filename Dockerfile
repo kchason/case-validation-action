@@ -21,4 +21,4 @@ ENV CASE_VALIDATE_ABORT "false"
 # Define the command to run the entrypoint.py script that will detect the type
 # of the path that was provided, apply the filter extension (if appropriate) and
 # run the `case_validate` function against the CASE file(s) to be validated.
-CMD ["python", "/opt/workspace/entrypoint.py"]
+CMD ["python3", "/opt/workspace/entrypoint.py"]

@@ -3,9 +3,10 @@ import sys
 
 from case_utils.case_validate import validate
 from case_utils.case_validate.validate_types import ValidationResult
+from case_utils.ontology.version_info import CURRENT_CASE_VERSION
 
 # Get the environment variables as the settings for the validation
-case_version: str = os.environ.get("CASE_VERSION", "case-1.2.0")
+case_version: str = os.environ.get("CASE_VERSION", CURRENT_CASE_VERSION)
 abort_on_failure: bool = (
     os.environ.get("CASE_VALIDATE_ABORT", "false").lower() == "true"
 )  # noqa: E501
