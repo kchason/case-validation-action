@@ -4,12 +4,13 @@ import sys
 from case_utils.case_validate import validate
 from case_utils.case_validate.validate_types import ValidationResult
 from case_utils.ontology.version_info import CURRENT_CASE_VERSION
-
 from github import Github
 
 # Get the environment variables as the settings for the validation
 case_version: str = os.environ.get("CASE_VERSION", CURRENT_CASE_VERSION)
-abort_on_failure: bool = os.environ.get("CASE_VALIDATE_ABORT", "false").lower() == "true"  # noqa: E501
+abort_on_failure: bool = (
+    os.environ.get("CASE_VALIDATE_ABORT", "false").lower() == "true"
+)  # noqa: E501
 case_path: str = os.environ.get("CASE_PATH", "/opt/json/")
 extension_filter: str = os.environ.get("CASE_EXTENSION_FILTER", "")
 report_in_pr = os.getenv("REPORT_IN_PR", "false").lower() == "true"
@@ -20,7 +21,8 @@ success: bool = True
 
 def generate_html_report(results: list[dict]) -> str:
     """
-    Generate an HTML report of the validation results for use in GitHub comments
+    Generate an HTML report of the validation results for
+    use in GitHub comments
     :param results: The list of validation results
     :return: The HTML report
     """
@@ -29,11 +31,23 @@ def generate_html_report(results: list[dict]) -> str:
     html += "<table>"
     html += "<tr><th>File</th><th>Valid</th></tr>"
     for result in results:
-        html += f'<tr><td>{result["file"]}</td><td>{"<span>&#x2713;</span>" if result["return_code"] == 0 else "<span>&#x2717;</span>"}</td></tr>'
+        html += f'<tr><td>{result["file"]}</td><td>'
+        html += (
+            "<span>&#x2713;</span>"
+            if result["return_code"] == 0
+            else "<span>&#x2717;</span>"
+        )
+        html += "</td></tr>"
     html += "</table>"
     html += "<h2>Details</h2>"
     for result in results:
-        html += f'<details><summary><h3>{result["file"]} {"<span>&#x2713;</span>" if result["return_code"] == 0 else "<span>&#x2717;</span>"}</h3></summary><pre>{result["output"]}</pre></details>'
+        html += f'<details><summary><h3>{result["file"]}'
+        html += (
+            "<span>&#x2713;</span>"
+            if result["return_code"] == 0
+            else "<span>&#x2717;</span>"
+        )
+        html += f'</h3></summary><pre>{result["output"]}</pre></details>'
     return html
 
 
@@ -67,7 +81,8 @@ def annotate_pr(message: str) -> None:
     repo = client.get_repo(github_repo)
     pr = repo.get_pull(github_pull_request)
 
-    # Delete all existing comments that start with "<h1>CASE Validation Results</h1>" to avoid duplicates
+    # Delete all existing comments that start with
+    # "<h1>CASE Validation Results</h1>" to avoid duplicates
     for comment in pr.get_issue_comments():
         if comment.body.startswith("<h1>CASE Validation Results</h1>"):
             comment.delete()
