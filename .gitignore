@@ -1,0 +1,7 @@
+# IDE Settings
+.idea/
+.vs/
+.vscode/
+
+# Environments
+venv/
