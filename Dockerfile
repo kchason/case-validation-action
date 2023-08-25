@@ -15,7 +15,7 @@ COPY entrypoint.py /opt/workspace/entrypoint.py
 # Define the base path for the validation path
 ENV CASE_PATH "/opt/json/"
 ENV CASE_VERSION "case-1.2.0"
-ENV CASE_FILTER_EXTENSION ""
+ENV CASE_EXTENSION_FILTER ""
 ENV CASE_VALIDATE_ABORT "false"
 
 # Define the command to run the entrypoint.py script that will detect the type

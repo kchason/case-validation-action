@@ -10,7 +10,7 @@ abort_on_failure: bool = (
     os.environ.get("CASE_VALIDATE_ABORT", "false").lower() == "true"
 )  # noqa: E501
 case_path: str = os.environ.get("CASE_PATH", "/opt/json/")
-extension_filter: str = os.environ.get("CASE_FILTER_EXTENSION", "")
+extension_filter: str = os.environ.get("CASE_EXTENSION_FILTER", "")
 
 # Determine if the provided path is a directory. If so, then there is filtering
 # and other handling to address. If it is a file, then it is assumed it should
