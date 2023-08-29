@@ -50,7 +50,3 @@ jobs:
         with:
           case-path: "./tests/data/"
           case-version: "case-1.2.0"
-          report-in-pr: "true"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          pull_request: ${{ github.event.number }}
