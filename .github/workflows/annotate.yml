@@ -1,0 +1,21 @@
+name: Annotate Pull Request
+
+on: [ pull_request ]
+
+jobs:
+  annotate:
+    runs-on: ubuntu-latest
+    steps:
+      # Get the code from the repository to be packaged
+      - name: Get Repo
+        uses: actions/checkout@v3
+
+      - name: Annotate - Directory No Filter
+        uses: ./
+        with:
+          case-path: "./tests/data/"
+          case-version: "case-1.2.0"
+          report-in-pr: "true"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          pull-request: ${{ github.event.pull_request.number }}

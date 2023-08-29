@@ -1,0 +1,11 @@
+{
+    "@context": {},
+    "@graph": [
+        {
+            "uco-core:description": "ABC Corp",
+            "@id": "kb:abc-org-1",
+            "@type": "uco-identity:Organization",
+            "uco-core:name": "ABC"
+        }
+    ]
+}
