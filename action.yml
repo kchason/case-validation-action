@@ -25,7 +25,7 @@ inputs:
     description: 'Whether or not to report the validation results in the pull request. Only reports if the action is triggered by a pull request.'
     required: false
     default: 'false'
-  github_token:
+  github-token:
     description: 'The GitHub token to use for reporting the validation results in the pull request.'
     required: false
     default: ''
@@ -33,7 +33,7 @@ inputs:
     description: 'The GitHub repository to use for reporting the validation results in the pull request.'
     required: false
     default: ''
-  pull_request:
+  pull-request:
     description: 'The GitHub pull request to use for reporting the validation results in the pull request.'
     required: false
     default: ''
