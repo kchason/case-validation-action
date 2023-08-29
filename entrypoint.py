@@ -16,7 +16,7 @@ extension_filter: str = os.environ.get("CASE_EXTENSION_FILTER", "")
 report_in_pr = os.getenv("REPORT_IN_PR", "false").lower() == "true"
 github_repo = os.getenv("GITHUB_REPOSITORY")
 github_token = os.getenv("GITHUB_TOKEN")
-github_pull_request = int(os.getenv("GITHUB_PULL_REQUEST", 0))
+github_pull_request = os.getenv("GITHUB_PULL_REQUEST", 0)
 
 # Print the variables with their keys for debugging
 print(f"CASE_VERSION: {case_version}")

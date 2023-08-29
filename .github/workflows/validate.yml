@@ -53,4 +53,4 @@ jobs:
           report-in-pr: "true"
           github_token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
-          pull_request: ${{ github.event.pull_request.number }}
+          pull_request: ${{ github.event.number }}
