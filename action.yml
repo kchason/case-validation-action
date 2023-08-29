@@ -33,7 +33,7 @@ runs:
     CASE_VERSION: ${{ inputs.case-version }}
     CASE_EXTENSION_FILTER: ${{ inputs.extension-filter }}
     CASE_VALIDATE_ABORT: ${{ inputs.abort }}
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    GITHUB_TOKEN: ${{ inputs.github_token }}
     REPORT_IN_PR: ${{ inputs.report-in-pr }}
-    GITHUB_REPOSITORY: ${{ github.repository }}
-    GITHUB_PULL_REQUEST: ${{ github.event.pull_request.number }}
+    GITHUB_REPOSITORY: ${{ inputs.repository }}
+    GITHUB_PULL_REQUEST: ${{ inputs.pull_request }}
