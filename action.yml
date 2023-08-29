@@ -26,26 +26,26 @@ inputs:
     required: false
     default: 'false'
   github_token:
-    description: 'The GitHub token to use for reporting the validation results in the pull request. Only reports if the action is triggered by a pull request.'
+    description: 'The GitHub token to use for reporting the validation results in the pull request.'
     required: false
     default: ''
   repository:
-    description: 'The GitHub repository to use for reporting the validation results in the pull request. Only reports if the action is triggered by a pull request.'
+    description: 'The GitHub repository to use for reporting the validation results in the pull request.'
     required: false
     default: ''
   pull_request:
-    description: 'The GitHub pull request to use for reporting the validation results in the pull request. Only reports if the action is triggered by a pull request.'
+    description: 'The GitHub pull request to use for reporting the validation results in the pull request.'
     required: false
     default: ''
 runs:
   using: 'docker'
-  image: 'docker://kchason/case-validator:1.4.0-draft'
+  image: 'docker://kchason/case-validator:1.4.0'
   env:
     CASE_PATH: ${{ inputs.case-path }}
     CASE_VERSION: ${{ inputs.case-version }}
     CASE_EXTENSION_FILTER: ${{ inputs.extension-filter }}
     CASE_VALIDATE_ABORT: ${{ inputs.abort }}
     REPORT_IN_PR: ${{ inputs.report-in-pr }}
-    GITHUB_TOKEN: ${{ inputs.github_token }}
+    GITHUB_TOKEN: ${{ inputs.github-token }}
     GITHUB_REPOSITORY: ${{ inputs.repository }}
-    GITHUB_PULL_REQUEST: ${{ inputs.pull_request }}
+    GITHUB_PULL_REQUEST: ${{ inputs.pull-request }}

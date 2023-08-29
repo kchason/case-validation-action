@@ -17,6 +17,8 @@ report_in_pr = os.getenv("REPORT_IN_PR", "false").lower() == "true"
 github_repo = os.getenv("GITHUB_REPOSITORY")
 github_token = os.getenv("GITHUB_TOKEN")
 github_pull_request = os.getenv("GITHUB_PULL_REQUEST", 0)
+# Convert the github_pull_request to an int if it's numeric, otherwise set it to an empty string
+github_pull_request = int(github_pull_request) if github_pull_request.isnumeric() else 0
 
 # Print the variables with their keys for debugging
 print(f"CASE_VERSION: {case_version}")
