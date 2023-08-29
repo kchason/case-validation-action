@@ -14,6 +14,19 @@ abort_on_failure: bool = (
 case_path: str = os.environ.get("CASE_PATH", "/opt/json/")
 extension_filter: str = os.environ.get("CASE_EXTENSION_FILTER", "")
 report_in_pr = os.getenv("REPORT_IN_PR", "false").lower() == "true"
+github_repo = os.getenv("GITHUB_REPOSITORY")
+github_token = os.getenv("GITHUB_TOKEN")
+github_pull_request = int(os.getenv("GITHUB_PULL_REQUEST", 0))
+
+# Print the variables with their keys for debugging
+print(f"CASE_VERSION: {case_version}")
+print(f"CASE_VALIDATE_ABORT: {abort_on_failure}")
+print(f"CASE_PATH: {case_path}")
+print(f"CASE_EXTENSION_FILTER: {extension_filter}")
+print(f"REPORT_IN_PR: {report_in_pr}")
+print(f"GITHUB_REPOSITORY: {github_repo}")
+print(f"GITHUB_TOKEN: {'******' if github_token else ''}")
+print(f"GITHUB_PULL_REQUEST: {github_pull_request}")
 
 results: list[dict] = []
 success: bool = True
@@ -59,15 +72,12 @@ def annotate_pr(message: str) -> None:
         return
 
     # Get the GitHub values from the environment
-    github_repo = os.getenv("GITHUB_REPOSITORY")
     if not github_repo:
         print("No GitHub repository provided")
         exit(1)
-    github_token = os.getenv("GITHUB_TOKEN")
     if not github_token:
         print("No GitHub token provided")
         exit(1)
-    github_pull_request = int(os.getenv("GITHUB_PULL_REQUEST", 0))
     if not github_pull_request or github_pull_request == 0:
         print("No GitHub pull request provided; not reporting in pull request")
         return
