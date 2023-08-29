@@ -10,7 +10,7 @@ from github import Github
 case_version: str = os.environ.get("CASE_VERSION", CURRENT_CASE_VERSION)
 abort_on_failure: bool = (
     os.environ.get("CASE_VALIDATE_ABORT", "false").lower() == "true"
-)  # noqa: E501
+)
 case_path: str = os.environ.get("CASE_PATH", "/opt/json/")
 extension_filter: str = os.environ.get("CASE_EXTENSION_FILTER", "")
 report_in_pr = os.getenv("REPORT_IN_PR", "false").lower() == "true"
@@ -19,35 +19,31 @@ results: list[dict] = []
 success: bool = True
 
 
-def generate_html_report(results: list[dict]) -> str:
+def generate_html_report(reports: list[dict]) -> str:
     """
-    Generate an HTML report of the validation results for
-    use in GitHub comments
-    :param results: The list of validation results
+    Generate an HTML report of the validation results for use in GitHub comments
+    :param reports: The list of validation results
     :return: The HTML report
     """
-    html = "<h1>CASE Validation Results</h1>"
+    html = "<!--AUTOMATED VALIDATION RESULTS-->"
+    html += "<h1>CASE Validation Results</h1>"
     html += "<h2>Summary</h2>"
     html += "<table>"
     html += "<tr><th>File</th><th>Valid</th></tr>"
-    for result in results:
-        html += f'<tr><td>{result["file"]}</td><td>'
+    for report in reports:
+        html += f'<tr><td>{report["file"]}</td><td>'
         html += (
-            "<span>&#x2713;</span>"
-            if result["return_code"] == 0
-            else "<span>&#x2717;</span>"
+            "<span>&#x2713;</span>" if report["conforms"] else "<span>&#x2717;</span>"
         )
         html += "</td></tr>"
     html += "</table>"
     html += "<h2>Details</h2>"
-    for result in results:
-        html += f'<details><summary><h3>{result["file"]}'
+    for report in reports:
+        html += f'<details><summary><h3>{report["file"]}&nbsp;'
         html += (
-            "<span>&#x2713;</span>"
-            if result["return_code"] == 0
-            else "<span>&#x2717;</span>"
+            "<span>&#x2713;</span>" if report["conforms"] else "<span>&#x2717;</span>"
         )
-        html += f'</h3></summary><pre>{result["output"]}</pre></details>'
+        html += f'</h3></summary><pre>{report["output"]}</pre></details>'
     return html
 
 
@@ -82,9 +78,9 @@ def annotate_pr(message: str) -> None:
     pr = repo.get_pull(github_pull_request)
 
     # Delete all existing comments that start with
-    # "<h1>CASE Validation Results</h1>" to avoid duplicates
+    # "<!--AUTOMATED VALIDATION RESULTS-->" to avoid duplicates
     for comment in pr.get_issue_comments():
-        if comment.body.startswith("<h1>CASE Validation Results</h1>"):
+        if comment.body.startswith("<!--AUTOMATED VALIDATION RESULTS-->"):
             comment.delete()
 
     # Create a new comment with the message
@@ -112,6 +108,9 @@ if os.path.isdir(case_path):
 
         print(f"Validating file at: {f}")
         print(result.text)
+        results.append(
+            {"file": f, "conforms": result.conforms, "output": result.text}
+        )  # noqa: E501
 
         if not result.conforms:
             has_failure = True
@@ -131,11 +130,12 @@ elif os.path.isfile(case_path):
     print(f"Validating file at: {case_path}")
     print(result.text)
     success = result.conforms
+    results.append(
+        {"file": case_path, "conforms": result.conforms, "output": result.text}
+    )
 
 else:
-    print(
-        f"${case_path} is not a valid path and the validation cannot continue"
-    )  # noqa: E501
+    print(f"${case_path} is not a valid path and the validation cannot continue")
     sys.exit(1)
 
 # Annotate the PR
