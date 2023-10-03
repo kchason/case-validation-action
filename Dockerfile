@@ -4,7 +4,7 @@ FROM python:3.11-slim-bullseye
 WORKDIR /opt/workspace
 
 # Install dependencies
-RUN python -m pip install case-utils==0.13.0 PyGithub
+RUN python -m pip install --no-cache-dir case-utils==0.13.0 PyGithub==2.1.1
 
 # Delete source files now that package has been installed
 WORKDIR /opt/workspace
@@ -17,6 +17,7 @@ ENV CASE_PATH "/opt/json/"
 ENV CASE_VERSION "case-1.2.0"
 ENV CASE_EXTENSION_FILTER ""
 ENV CASE_VALIDATE_ABORT "false"
+ENV CASE_ALLOW_UNRECOGNIZED "false"
 
 # Required for annotating the GitHub pull request; optional otherwise
 ENV REPORT_IN_PR "false"

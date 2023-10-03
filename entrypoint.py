@@ -13,6 +13,9 @@ abort_on_failure: bool = (
 )
 case_path: str = os.environ.get("CASE_PATH", "/opt/json/")
 extension_filter: str = os.environ.get("CASE_EXTENSION_FILTER", "")
+allow_unrecognized: bool = (
+    os.environ.get("CASE_ALLOW_UNRECOGNIZED", "false").lower() == "true"
+)
 report_in_pr = os.getenv("REPORT_IN_PR", "false").lower() == "true"
 github_repo = os.getenv("GITHUB_REPOSITORY")
 github_token = os.getenv("GITHUB_TOKEN")
@@ -23,6 +26,7 @@ github_pull_request = int(github_pull_request) if github_pull_request.isnumeric(
 # Print the variables with their keys for debugging
 print(f"CASE_VERSION: {case_version}")
 print(f"CASE_VALIDATE_ABORT: {abort_on_failure}")
+print(f"CASE_ALLOW_UNRECOGNIZED: {allow_unrecognized}")
 print(f"CASE_PATH: {case_path}")
 print(f"CASE_EXTENSION_FILTER: {extension_filter}")
 print(f"REPORT_IN_PR: {report_in_pr}")
@@ -115,7 +119,10 @@ if os.path.isdir(case_path):
     has_failure: bool = False
     for f in files:
         result: ValidationResult = validate(
-            f, case_version=case_version, abort_on_first=abort_on_failure
+            f,
+            case_version=case_version,
+            abort_on_first=abort_on_failure,
+            allow_warnings=allow_unrecognized,
         )
 
         print(f"Validating file at: {f}")
@@ -136,7 +143,10 @@ elif os.path.isfile(case_path):
     # If the path is a file, then it is assumed it should be validated
     # and ignore the filter
     result: ValidationResult = validate(
-        case_path, case_version=case_version, abort_on_first=abort_on_failure
+        case_path,
+        case_version=case_version,
+        abort_on_first=abort_on_failure,
+        allow_warnings=allow_unrecognized,
     )
 
     print(f"Validating file at: {case_path}")
