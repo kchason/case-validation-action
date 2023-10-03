@@ -21,6 +21,10 @@ inputs:
     description: 'Whether to abort the validator on the first failure'
     required: false
     default: 'false'
+  allow-unrecognized:
+    description: 'Whether to allow unrecognized CDO concepts in the graph'
+    required: false
+    default: 'false'
   report-in-pr:
     description: 'Whether or not to report the validation results in the pull request. Only reports if the action is triggered by a pull request.'
     required: false
@@ -39,12 +43,13 @@ inputs:
     default: ''
 runs:
   using: 'docker'
-  image: 'docker://kchason/case-validator:1.4.0'
+  image: 'docker://kchason/case-validator:1.5.0'
   env:
     CASE_PATH: ${{ inputs.case-path }}
     CASE_VERSION: ${{ inputs.case-version }}
     CASE_EXTENSION_FILTER: ${{ inputs.extension-filter }}
     CASE_VALIDATE_ABORT: ${{ inputs.abort }}
+    CASE_ALLOW_UNRECOGNIZED: ${{ inputs.allow-unrecognized }}
     REPORT_IN_PR: ${{ inputs.report-in-pr }}
     GITHUB_TOKEN: ${{ inputs.github-token }}
     GITHUB_REPOSITORY: ${{ inputs.repository }}

@@ -17,6 +17,7 @@ ENV CASE_PATH "/opt/json/"
 ENV CASE_VERSION "case-1.2.0"
 ENV CASE_EXTENSION_FILTER ""
 ENV CASE_VALIDATE_ABORT "false"
+ENV CASE_ALLOW_UNRECOGNIZED "false"
 
 # Required for annotating the GitHub pull request; optional otherwise
 ENV REPORT_IN_PR "false"
