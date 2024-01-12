@@ -4,8 +4,10 @@ on: [ pull_request ]
 
 jobs:
   annotate:
+    if: github.event.pull_request.head.user == 'kchason'
     runs-on: ubuntu-latest
-    steps:
+    steps:      
+
       # Get the code from the repository to be packaged
       - name: Get Repo
         uses: actions/checkout@v3
