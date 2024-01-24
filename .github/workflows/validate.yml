@@ -32,6 +32,7 @@ jobs:
           path: Dockerfile
           fail_on: high,medium
           output_path: results
+          output_formats: 'json,sarif'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
@@ -39,7 +40,7 @@ jobs:
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v2
         with:
-          sarif_file: results-dir/results.sarif
+          sarif_file: results/results.sarif
 
   test:
     runs-on: ubuntu-latest
