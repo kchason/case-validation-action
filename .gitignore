@@ -6,3 +6,6 @@
 # Environments
 venv/
 virtualenv/
+
+# Security Artifacts
+results.json
