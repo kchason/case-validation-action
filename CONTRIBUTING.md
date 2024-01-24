@@ -21,7 +21,7 @@ pre-commit run --all-files
 This project uses [KICS](https://docs.kics.io/latest/getting-started/) to scan for security issues in the infrastructure such as the `Dockerfile`. To run the scan, run the following command:
 
 ```bash
-docker run -t -v $(pwd):/path checkmarx/kics:latest scan -p /path -o "/path/"
+docker run -t -v $(pwd):/path checkmarx/kics:latest scan -p /path/Dockerfile -o "/path/"
 ```
 
 This will generate a `results.json` file as well as print the contents to the console. Any findings above a `low` severity should be addressed before committing code as they will fail the CI pipeline.

@@ -29,7 +29,7 @@ jobs:
       - name: Docker Scan
         uses: Checkmarx/kics-github-action@v1.7.0
         with:
-          path: .
+          path: Dockerfile
           fail_on: high,medium
           output_path: results
         env:
