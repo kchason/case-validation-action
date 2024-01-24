@@ -4,13 +4,18 @@ FROM python:3.11-slim-bullseye
 WORKDIR /opt/workspace
 
 # Install dependencies
-RUN python -m pip install case-utils==0.15.0 PyGithub
+RUN python -m pip install case-utils==0.15.0 PyGithub==2.1.1 --no-cache-dir
 
 # Delete source files now that package has been installed
 WORKDIR /opt/workspace
 
 # Copy in the entrypoint file
 COPY entrypoint.py /opt/workspace/entrypoint.py
+
+# Setup a user with the appropriate permissions
+RUN useradd -ms /bin/bash case &&\
+    chown -R case:case /opt/workspace
+USER case
 
 # Define the base path for the validation path
 ENV CASE_PATH "/opt/json/"
