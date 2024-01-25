@@ -4,24 +4,13 @@ on: [ pull_request ]
 
 jobs:
   annotate:
-    # if: github.event.pull_request.head.user == 'kchason'
+    if: github.event.pull_request.head.user.name == 'kchason'
     runs-on: ubuntu-latest
     steps:      
 
       # Get the code from the repository to be packaged
       - name: Get Repo
         uses: actions/checkout@v3
-
-      - name: Debug
-        run: |
-          echo "User: ${{ github.event.pull_request.head.user }}"
-          echo "Source Repo: ${{ github.event.pull_request.head.repo.full_name }}"
-          echo "Source Branch: ${{ github.event.pull_request.head.ref }}"
-          echo "Target Repo: ${{ github.event.pull_request.base.repo.full_name }}"
-          echo "Target Branch: ${{ github.event.pull_request.base.ref }}"
-          echo "Repo: ${{ github.repository }}"
-          echo "PR: ${{ github.event.pull_request.number }}"
-          echo "Branch: ${{ github.event.pull_request.head.ref }}"
 
       - name: Annotate - Directory No Filter
         uses: ./

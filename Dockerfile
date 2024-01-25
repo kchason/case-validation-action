@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 python:3.11-slim-bullseye
+FROM python:3.11-slim-bullseye
 
 # This is based on guidance in https://github.com/casework/CASE-Utilities-Python/tree/main
 WORKDIR /opt/workspace
