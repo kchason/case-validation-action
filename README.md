@@ -27,10 +27,10 @@ Include the validation action in your GitHub action workflow and specify the fil
 ```yaml
 # Run the CASE validation job to confirm the output is valid
 - name: CASE Export Validation
-  uses: kchason/case-validation-action@v2.8.0
+  uses: kchason/case-validation-action@v2.9.0
   with:
     case-path: ./output/
-    case-version: "case-1.2.0"
+    case-version: "case-1.3.0"
     extension-filter: "jsonld"
     report-in-pr: "true"
     github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -51,7 +51,7 @@ modified to fit custom use cases.
 # To run the latest image and remove the container after execution. 
 docker run --rm \
 	-e CASE_PATH="/opt/case/" \
-	-e CASE_VERSION="case-1.2.0" \
+	-e CASE_VERSION="case-1.3.0" \
 	-e CASE_EXTENSION_FILTER="jsonld" \
 	-v "/path/to/local:/opt/case" \
 	kchason/case-validator:latest
@@ -70,7 +70,7 @@ at [https://gitlab.com/keith.chason/case-validation-example](https://gitlab.com/
 | Action Variable  | Environment Variable  | Description                                                                                                                                                                      | Options                                                                                                   | Default      |
 |------------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|--------------|
 | case-path        | CASE_PATH             | The path to the file or directory to be validated.                                                                                                                               | Any                                                                                                       | /opt/json    |
-| case-version     | CASE_VERSION          | The version of the ontology against which the graph should be validatated.                                                                                                       | "none", "case-0.5.0", "case-0.6.0" , "case-0.7.0", "case-0.7.1", "case-1.0.0", "case-1.1.0", "case-1.2.0" | "case-1.2.0" |
+| case-version     | CASE_VERSION          | The version of the ontology against which the graph should be validatated.                                                                                                       | "none", "case-0.5.0", "case-0.6.0" , "case-0.7.0", "case-0.7.1", "case-1.0.0", "case-1.1.0", "case-1.2.0", "case-1.3.0" | "case-1.3.0" |
 | extension-filter | CASE_EXTENSION_FILTER | The extension of only the files against which the validator should be run. Eg. `"json"`, `"jsonld"`, `"case"`. Defaults to `""` to run against all files defined in `case-path`. | Any                                                                                                       | ""           |
 | abort            | CASE_VALIDATE_ABORT   | Whether to abort the validator on the first failure                                                                                                                              | "true", "false"                                                                                           | "false"      |
 | report-in-pr     | REPORT_IN_PR          | Whether or not to report the validation results in the pull request. Only reports if the action is triggered by a pull request.                                                  | "true", "false"                                                                                           | "false"      |
