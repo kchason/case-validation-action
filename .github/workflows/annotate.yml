@@ -4,7 +4,7 @@ on: [ pull_request ]
 
 jobs:
   annotate:
-    if: github.event.pull_request.head.user == 'kchason'
+    if: github.event.pull_request.head.user.login == 'kchason'
     runs-on: ubuntu-latest
     steps:      
 
@@ -16,7 +16,7 @@ jobs:
         uses: ./
         with:
           case-path: "./tests/data/"
-          case-version: "case-1.2.0"
+          case-version: "case-1.3.0"
           report-in-pr: "true"
           github-token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
