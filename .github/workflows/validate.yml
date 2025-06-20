@@ -8,7 +8,7 @@ jobs:
     steps:
       # Get the code from the repository to be packaged
       - name: Get Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Install pre-commit and run the checks
       - name: Pre-commit Checks
@@ -30,7 +30,7 @@ jobs:
     steps:
       # Get the code from the repository to be packaged
       - name: Get Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Run Action - Specific File
         uses: ./
