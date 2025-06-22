@@ -23,7 +23,7 @@ jobs:
       - name: Docker Lint
         uses: hadolint/hadolint-action@v3.1.0
         with:
-          target: Dockerfile
+          dockerfile: Dockerfile
 
   test:
     runs-on: ubuntu-latest
