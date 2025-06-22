@@ -4,7 +4,7 @@ FROM python:3.11-slim-bullseye
 WORKDIR /opt/workspace
 
 # Install dependencies
-RUN python -m pip install case-utils==0.17.0 PyGithub
+RUN python -m pip install --no-cache-dir case-utils==0.17.0 PyGithub==2.6.1
 
 # Delete source files now that package has been installed
 WORKDIR /opt/workspace
