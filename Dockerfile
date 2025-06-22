@@ -13,16 +13,16 @@ WORKDIR /opt/workspace
 COPY entrypoint.py /opt/workspace/entrypoint.py
 
 # Define the base path for the validation path
-ENV CASE_PATH "/opt/json/"
-ENV CASE_VERSION "case-1.4.0"
-ENV CASE_EXTENSION_FILTER ""
-ENV CASE_VALIDATE_ABORT "false"
+ENV CASE_PATH="/opt/json/"
+ENV CASE_VERSION="case-1.4.0"
+ENV CASE_EXTENSION_FILTER=""
+ENV CASE_VALIDATE_ABORT="false"
 
 # Required for annotating the GitHub pull request; optional otherwise
-ENV REPORT_IN_PR "false"
-ENV GITHUB_TOKEN ""
-ENV GITHUB_REPOSITORY ""
-ENV GITHUB_PULL_REQUEST ""
+ENV REPORT_IN_PR="false"
+ENV GITHUB_TOKEN=""
+ENV GITHUB_REPOSITORY=""
+ENV GITHUB_PULL_REQUEST=""
 
 # Define the command to run the entrypoint.py script that will detect the type
 # of the path that was provided, apply the filter extension (if appropriate) and
