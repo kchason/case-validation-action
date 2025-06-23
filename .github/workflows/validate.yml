@@ -1,6 +1,8 @@
 name: Repository Checks
 
-on: [ push ]
+on:
+  - pull_request
+  - push
 
 jobs:
   lint:
@@ -8,7 +10,7 @@ jobs:
     steps:
       # Get the code from the repository to be packaged
       - name: Get Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Install pre-commit and run the checks
       - name: Pre-commit Checks
@@ -19,11 +21,9 @@ jobs:
       # Lint the Dockerfile for syntax correctness and conformance with
       # standards.
       - name: Docker Lint
-        uses: luke142367/Docker-Lint-Action@v1.0.0
+        uses: hadolint/hadolint-action@v3.1.0
         with:
-          target: Dockerfile
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          dockerfile: Dockerfile
 
       # Scan the Dockerfile with KICS to check for security issues.
       - name: Docker Scan
@@ -47,23 +47,23 @@ jobs:
     steps:
       # Get the code from the repository to be packaged
       - name: Get Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Run Action - Specific File
         uses: ./
         with:
           case-path: "./tests/data/simple-case.jsonld"
-          case-version: "case-1.2.0"
+          case-version: "case-1.4.0"
 
       - name: Run Action - Directory Filter
         uses: ./
         with:
           case-path: "./tests/data/"
-          case-version: "case-1.2.0"
+          case-version: "case-1.4.0"
           extension-filter: "jsonld"
 
       - name: Run Action - Directory No Filter
         uses: ./
         with:
           case-path: "./tests/data/"
-          case-version: "case-1.2.0"
+          case-version: "case-1.4.0"

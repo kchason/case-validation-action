@@ -4,19 +4,19 @@ on: [ pull_request ]
 
 jobs:
   annotate:
-    if: github.event.pull_request.head.user == 'kchason'
+    if: github.event.pull_request.head.user.login == 'kchason'
     runs-on: ubuntu-latest
     steps:      
 
       # Get the code from the repository to be packaged
       - name: Get Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Annotate - Directory No Filter
         uses: ./
         with:
           case-path: "./tests/data/"
-          case-version: "case-1.2.0"
+          case-version: "case-1.4.0"
           report-in-pr: "true"
           github-token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
