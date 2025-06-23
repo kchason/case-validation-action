@@ -27,7 +27,7 @@ jobs:
 
       # Scan the Dockerfile with KICS to check for security issues.
       - name: Docker Scan
-        uses: Checkmarx/kics-github-action@v1.7.0
+        uses: Checkmarx/kics-github-action@v2.1.10
         with:
           path: Dockerfile
           fail_on: high,medium
