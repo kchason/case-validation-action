@@ -12,6 +12,11 @@ WORKDIR /opt/workspace
 # Copy in the entrypoint file
 COPY entrypoint.py /opt/workspace/entrypoint.py
 
+# Setup a user with the appropriate permissions
+RUN useradd -ms /bin/bash case &&\
+    chown -R case:case /opt/workspace
+USER case
+
 # Define the base path for the validation path
 ENV CASE_PATH="/opt/json/"
 ENV CASE_VERSION="case-1.4.0"

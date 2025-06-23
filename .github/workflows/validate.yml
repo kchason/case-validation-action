@@ -25,6 +25,23 @@ jobs:
         with:
           dockerfile: Dockerfile
 
+      # Scan the Dockerfile with KICS to check for security issues.
+      - name: Docker Scan
+        uses: Checkmarx/kics-github-action@v2.1.10
+        with:
+          path: Dockerfile
+          fail_on: high,medium
+          output_path: results
+          output_formats: 'json,sarif'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      # Upload the results of the KICS scan as a build artifact.
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: results/results.sarif
+
   test:
     runs-on: ubuntu-latest
     steps:
